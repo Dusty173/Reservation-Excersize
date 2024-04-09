@@ -1,5 +1,6 @@
 /** Customer for Lunchly */
 
+const { relativeTimeRounding } = require("moment");
 const db = require("../db");
 const Reservation = require("./reservation");
 
@@ -12,6 +13,30 @@ class Customer {
     this.lastName = lastName;
     this.phone = phone;
     this.notes = notes;
+  }
+
+  // method for getting first/last name as full name
+  get fullName(){
+    return `${this.firstName} ${this.lastName}`;
+  }
+
+  // methods for notes
+  set notes(val){
+    this._notes = val || '';
+  }
+
+  get notes(){
+    return this._notes;
+  }
+
+  // methods for phone numbers
+
+  set phone(val) {
+    this._phone = val || null;
+  }
+
+  get phone(){
+    return this._phone;
   }
 
   /** find all customers. */
